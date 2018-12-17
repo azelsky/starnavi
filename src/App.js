@@ -18,7 +18,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state.products);
         return (
             <Grid>
                 {this.state.products && <Products products = {this.state.products}/>}
