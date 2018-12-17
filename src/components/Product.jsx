@@ -3,6 +3,7 @@ import {Col} from 'react-bootstrap';
 
 import { Image, ImageWrapper, Area, FullAddress, Price, Wrapper } from './style/product'
 import {handleArea, handlePrice} from '../helper';
+import PropTypes from "prop-types";
 
 class Product extends Component {
 
@@ -24,3 +25,13 @@ class Product extends Component {
 }
 
 export default Product;
+
+Product.propTypes = {
+    product: PropTypes.shape({
+        id: PropTypes.number,
+        full_address: PropTypes.string,
+        images: PropTypes.array,
+        area: PropTypes.number,
+        price: PropTypes.number,
+    })
+};

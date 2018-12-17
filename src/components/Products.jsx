@@ -3,6 +3,7 @@ import { Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 import Product from './Product';
+import PropTypes from "prop-types";
 
 class Products extends Component {
 
@@ -21,3 +22,7 @@ class Products extends Component {
 }
 
 export default Products;
+
+Products.propTypes = {
+    products: PropTypes.array
+};

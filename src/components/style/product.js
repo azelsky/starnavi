@@ -41,3 +41,7 @@ export const Area = styled.p`
 export const Description = styled.p`
     font-size: 14px;
 `;
+
+export const H1 = styled.h1`
+    
+`;

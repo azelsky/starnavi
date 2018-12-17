@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import { Row, Col, Carousel } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-import {Area, FullAddress, ImageWrapper, Price, Description} from './style/product';
+import {Area, FullAddress, ImageWrapper, Price, Description, H1} from './style/product';
 import {handleArea, handlePrice} from '../helper';
 
 class ProductDescription extends Component {
 
     render() {
-        console.log('props', this.props);
         const product = this.props.products.find((product) => product.id.toString() === this.props.match.params.id);
+        if (!product) return <H1>Page not Found 404</H1>
         const {full_address, description, area, price, images} = product;
         return (
             <Row>
@@ -34,3 +35,8 @@ class ProductDescription extends Component {
 }
 
 export default ProductDescription;
+
+ProductDescription.propTypes = {
+    products: PropTypes.array,
+    match: PropTypes.object
+};
