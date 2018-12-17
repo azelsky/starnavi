@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import axios from 'axios';
+import {Grid} from 'react-bootstrap';
+
+import Products from './components/Products'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    state = {
+        products: undefined
+    };
+
+    componentDidMount() {
+        axios.get(`http://demo4452328.mockable.io/properties`)
+            .then(res => {
+                const products = res.data.data;
+                this.setState({products});
+            })
+    }
+
+    render() {
+        console.log(this.state.products);
+        return (
+            <Grid>
+                {this.state.products && <Products products = {this.state.products}/>}
+            </Grid>
+        );
+    }
 }
 
 export default App;
