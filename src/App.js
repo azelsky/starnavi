@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Grid} from 'react-bootstrap';
+import { BrowserRouter as Router, Route} from "react-router-dom";
 
 import Products from './components/Products'
+import ProductDescription from './components/ProductDescription'
 
 class App extends Component {
     state = {
@@ -19,9 +21,14 @@ class App extends Component {
 
     render() {
         return (
-            <Grid>
-                {this.state.products && <Products products = {this.state.products}/>}
-            </Grid>
+            <Router>
+                <div>
+                    <Grid>
+                        {this.state.products && <Route exact path="/" render={() => <Products products = {this.state.products}/>}/>}
+                        {this.state.products && <Route path="/:id" render={({match}) => <ProductDescription match ={match} products = {this.state.products} />}/>}
+                    </Grid>
+                </div>
+            </Router>
         );
     }
 }

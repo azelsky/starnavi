@@ -14,7 +14,8 @@ export const Wrapper = styled.div`
 
 export const ImageWrapper = styled.div`
     overflow: hidden;
-    max-height: 300px;
+    height: ${props => props.IWHeight};
+    text-align: center;
 `;
 
 export const FullAddress = styled.h6`
@@ -35,4 +36,8 @@ export const Price = styled.h3`
 
 export const Area = styled.p`
     
+`;
+
+export const Description = styled.p`
+    font-size: 14px;
 `;

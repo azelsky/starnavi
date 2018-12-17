@@ -1,28 +1,22 @@
 import React, {Component} from 'react';
 import {Col} from 'react-bootstrap';
+
 import { Image, ImageWrapper, Area, FullAddress, Price, Wrapper } from './style/product'
+import {handleArea, handlePrice} from '../helper';
 
 class Product extends Component {
-
-    handleArea(area) {
-        return area && `${area} sq. fr.`
-    }
-
-    handlePrice(price) {
-        return `$${price.toString().replace(/(\d{1,3})(?=((\d{3})*([^\d]|$)))/g, " $1 ")}`;
-    }
 
     render() {
         const { full_address, images, area, price } = this.props.product;
         return (
-            <Col md={3}>
+            <Col md={3} sm={6} xs={12}>
                 <Wrapper>
                     <FullAddress>{full_address}</FullAddress>
-                    <ImageWrapper>
+                    <ImageWrapper IWHeight = "300px">
                         <Image src={images[0]}></Image>
                     </ImageWrapper>
-                    <Price>{this.handlePrice(price)}</Price>
-                    <Area>{this.handleArea(area)}</Area>
+                    <Price>{handlePrice(price)}</Price>
+                    <Area>{handleArea(area)}</Area>
                 </Wrapper>
             </Col>
         );
