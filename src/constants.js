@@ -1,0 +1,1 @@
+export const baseUrl = 'http://demo4452328.mockable.io/';

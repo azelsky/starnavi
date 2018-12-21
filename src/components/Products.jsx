@@ -8,9 +8,11 @@ import PropTypes from "prop-types";
 class Products extends Component {
 
     render() {
+        const { products } = this.props;
+        if (!products.length) return null;
         return (
             <Row>
-                {this.props.products.map((product) => (
+                {products.map((product) => (
                     <Link key = {product.id} to={`/${product.id}`}>
                         <Product product = {product} />
                     </Link>
